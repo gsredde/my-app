@@ -1,9 +1,10 @@
 node{
-   stage('SCM Checkout'){
+   stage('SCM Checkout'){ 
      git 'https://github.com/gsredde/my-app'
    }
    stage('Compile-Package'){
-     sh 'mvn package'
+     def mvnHome = tool name: 'mymavens', type: 'maven'
+     sh "${mvnHome}/bin/mvn package"
    }
 }
      
